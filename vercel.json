@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/check-cooldowns",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/cron/check-prices",
+      "schedule": "0 3 * * *"
+    }
+  ]
+}

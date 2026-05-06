@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Linger palette: warm, soft, bedroom-at-night calm.
+     Cream background, deep plum text, rose + lilac + sage softs. */
+  --background: #faf6f1;
+  --surface: #ffffff;
+  --foreground: #2a1a2e;
+  --muted: #6b5a6e;
+  --border: #ece4dc;
+  --accent: #d98aa6;        /* rose */
+  --accent-fg: #ffffff;
+  --accent-soft: #f5dde6;
+  --success: #7a9b6e;       /* sage — savings wins */
+  --success-soft: #e3ecdc;
+  --warning: #c9985d;       /* amber — selling out */
+  --warning-soft: #f3e7d3;
+  --lilac: #a89cc8;         /* cool counterpoint to rose */
+  --lilac-soft: #ebe5f3;
+  --butter-soft: #f7eed1;   /* warm neutral, used sparingly */
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-lilac: var(--lilac);
+  --color-lilac-soft: var(--lilac-soft);
+  --color-butter-soft: var(--butter-soft);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-fraunces);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+/* Atmospheric pastel gradient — used behind the savings counter and big moments. */
+.bg-soft-gradient {
+  background:
+    radial-gradient(at 20% 0%, var(--accent-soft) 0%, transparent 55%),
+    radial-gradient(at 90% 25%, var(--lilac-soft) 0%, transparent 55%),
+    radial-gradient(at 30% 100%, var(--success-soft) 0%, transparent 55%),
+    var(--background);
+}
+
+/* Blurred orb decoration. Drop into a relative parent with overflow-hidden. */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.7;
+  pointer-events: none;
 }

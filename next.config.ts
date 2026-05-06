@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Item images come from arbitrary retailer hostnames; we use plain <img>.
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
